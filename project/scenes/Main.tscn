@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://e2m1wcqnluxv"]
+
+[ext_resource type="Script" uid="uid://ch52j0mhu73wc" path="res://scripts/Main.gd" id="1_elqb8"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_elqb8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19215687, 0.19215687, 0.19215687, 1)
+
+[node name="QuarterLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 99.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "Year 1, Q1"
+horizontal_alignment = 1
+
+[node name="NextQuarterButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 72
+text = "Next Quarter"
+
+[connection signal="pressed" from="NextQuarterButton" to="." method="_on_next_quarter_button_pressed"]
