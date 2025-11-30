@@ -51,14 +51,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="DashboardButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 42
-text = "Dashboard"
-
 [node name="Panel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 300)
+custom_minimum_size = Vector2(1080, 300)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_elqb8")
 
@@ -76,16 +70,16 @@ size_flags_horizontal = 3
 
 [node name="QuarterLabel" type="Label" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 42
-text = " Year 1,  Q1"
+text = "Year 1,  Q1"
 
 [node name="PopulationLabel" type="Label" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 42
-text = " Population:"
+text = "Population:"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Panel/HBoxContainer"]
 layout_mode = 2
@@ -162,6 +156,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 42
 text = "Safety"
+
+[node name="DashboardButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Dashboard"
 
 [node name="NextQuarterButton" type="Button" parent="."]
 layout_mode = 1
