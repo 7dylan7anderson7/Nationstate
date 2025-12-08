@@ -8,9 +8,7 @@ extends Control
 
 #Funciton executes on game startup
 func _ready():
-	EconomySystem.generate_citizens()
 	EconomySystem.update_economy()
-	EconomySystem.update_unemployment()
 	update_labels()
 
 #Updates all main menu labels with current data

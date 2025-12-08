@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameState="*res://scripts/GameState.gd"
 EconomySystem="*res://scripts/systems/EconomySystem.gd"
+ResourceSystem="*res://scripts/systems/ResourceSystem.gd"
 
 [display]
 
