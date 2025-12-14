@@ -8,15 +8,15 @@ extends Control
 
 #Funciton executes on game startup
 func _ready():
-	EconomySystem.update_economy()
+	EconomySystem.calculate_GDP()
 	update_labels()
 
 #Updates all main menu labels with current data
 func update_labels():
 	quarter_label.text = " Year %s, Q%s" % [GameState.year, GameState.quarter]
-	gdp_label.text = "GDP: $%sB" % [EconomySystem.GDP]
-	population_label.text = "Population: %sM" % [EconomySystem.population]
-	unemployment_label.text = "Unemployment: %s%%" % [int(EconomySystem.unemployment)] #Convert to int to get a whole percentage
+	gdp_label.text = "GDP: $%sB" % [snapped(EconomySystem.total_GDP, 0.001)] #Snapped limits GDP output to 3 decimals
+	population_label.text = "Population: %sM" % [snapped(EconomySystem.population, 0.01)]
+	unemployment_label.text = "Unemployment: %s%%" % [snapped(EconomySystem.flux_unemployment, 0.1)]
 
 
 func _on_next_quarter_button_pressed() -> void:
