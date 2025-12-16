@@ -23,3 +23,7 @@ func _on_next_quarter_button_pressed() -> void:
 	GameState.next_quarter()
 	EconomySystem.update_economy()
 	update_labels()
+
+
+func _on_trade_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/TradeControls.tscn")
