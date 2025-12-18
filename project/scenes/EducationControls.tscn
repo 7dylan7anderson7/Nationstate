@@ -1,0 +1,249 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwexlm4i3s7f7"]
+
+[ext_resource type="Script" uid="uid://b037fty0xaqwg" path="res://scripts/EducationControls.gd" id="1_efk2h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mg05s"]
+bg_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_efk2h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19215687, 0.19215687, 0.19215687, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 201.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "Nationstate
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LiteracyLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Current Literacy: 40%"
+horizontal_alignment = 1
+
+[node name="PrimaryPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mg05s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PrimaryPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -105.5
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/PrimaryPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SelectedPrimaryLabel" type="Label" parent="VBoxContainer/PrimaryPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Primary Education Policy: "
+
+[node name="PrimaryNameLabel" type="Label" parent="VBoxContainer/PrimaryPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Moderate"
+
+[node name="PrimaryDescriptionLabel" type="Label" parent="VBoxContainer/PrimaryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Moderate levels of spending with average educational outcomes."
+horizontal_alignment = 1
+
+[node name="PrimaryHSlider" type="HSlider" parent="VBoxContainer/PrimaryPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 4.0
+value = 2.0
+tick_count = 4
+ticks_position = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PrimaryPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="PrimaryLowLabel" type="Label" parent="VBoxContainer/PrimaryPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Low"
+
+[node name="PrimaryHighLabel" type="Label" parent="VBoxContainer/PrimaryPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 42
+text = "High"
+
+[node name="SecondaryPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mg05s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/SecondaryPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -105.5
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/SecondaryPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SelectedSecondaryLabel" type="Label" parent="VBoxContainer/SecondaryPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Secondary Education Policy: "
+
+[node name="SecondaryNameLabel" type="Label" parent="VBoxContainer/SecondaryPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Moderate"
+
+[node name="SecondaryDescriptionLabel" type="Label" parent="VBoxContainer/SecondaryPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Moderate levels of spending with average educational outcomes."
+horizontal_alignment = 1
+
+[node name="SecondaryHSlider" type="HSlider" parent="VBoxContainer/SecondaryPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 4.0
+value = 2.0
+tick_count = 4
+ticks_position = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/SecondaryPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SecondaryLowLabel" type="Label" parent="VBoxContainer/SecondaryPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Low"
+
+[node name="SecondaryHighLabel" type="Label" parent="VBoxContainer/SecondaryPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 42
+text = "High"
+
+[node name="HigherPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mg05s")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HigherPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -105.5
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HigherPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SelectedHigherLabel" type="Label" parent="VBoxContainer/HigherPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Higher Education Policy: "
+
+[node name="HigherNameLabel" type="Label" parent="VBoxContainer/HigherPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Moderate"
+
+[node name="HigherDescriptionLabel" type="Label" parent="VBoxContainer/HigherPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Moderate levels of spending with average educational outcomes."
+horizontal_alignment = 1
+
+[node name="HigherHSlider" type="HSlider" parent="VBoxContainer/HigherPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 4.0
+value = 2.0
+tick_count = 4
+ticks_position = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HigherPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HigherLowLabel" type="Label" parent="VBoxContainer/HigherPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Low"
+
+[node name="HigherHighLabel" type="Label" parent="VBoxContainer/HigherPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 42
+text = "High"
+
+[node name="SetEducationPolicyButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 72
+text = "Set Policy"
+
+[connection signal="value_changed" from="VBoxContainer/PrimaryPanel/VBoxContainer/PrimaryHSlider" to="." method="_on_primary_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SecondaryPanel/VBoxContainer/SecondaryHSlider" to="." method="_on_secondary_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HigherPanel/VBoxContainer/HigherHSlider" to="." method="_on_higher_h_slider_value_changed"]
+[connection signal="pressed" from="SetEducationPolicyButton" to="." method="_on_set_education_policy_button_pressed"]

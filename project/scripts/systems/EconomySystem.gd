@@ -20,12 +20,12 @@ var urban_dict = {"urban": 40, "suburban": 10, "rural": 50} #Dictionary of perce
 #Modifier variables set as defaults that are affected by political decisions
 var inflation: float = .02 #Inflation percentage as a multiplier
 var trade: float = .2 #Trade percentage of GDP as a multiplier
-var literacy_roc: float = .1 #Increase in literacy rates per quarter
+var literacy_roc: float = .45 #Increase in literacy rates per quarter
 var birthrate: float = 15 #Births per 1000 population
 var deathrate: float = 12 #Deaths per 1000 population
 
 #To variables are set when a policy is modified and change a Modifier variable to that value over time
-var tradeTo: float
+var tradeTo: float = trade
 
 #To functions
 func trade_to_trade():
@@ -40,13 +40,18 @@ func modify_population():
 	population = population - (population * (deathrate/1000))
 
 func modify_literacy():
-	literacy = literacy + literacy_roc
+	if literacy < 80:
+		literacy += literacy_roc
+	elif literacy < 99:
+		literacy += literacy_roc/(literacy-79) #Introduces diminishing returns on literacy after 80 percent
+	else:
+		pass
 
 func calculate_employment():
 	flux_unemployment = unemployment + ((RNG.randf_range(-20.0, 20.0))/100) #Randomizes a .2 percent standard deviation
 
 func calculate_GDP():
-	trade_to_trade() #Performs this quarter's value modification if it exists
+	trade_to_trade()
 	trade_GDP = (domestic_GDP * trade)
 	total_GDP = domestic_GDP + trade_GDP
 
