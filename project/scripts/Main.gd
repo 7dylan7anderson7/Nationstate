@@ -30,3 +30,10 @@ func _on_trade_button_pressed() -> void:
 #Functionality for Education button
 func _on_education_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/EducationControls.tscn")
+
+
+func _on_healthcare_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/HealthcareControls.tscn")
+
+func _on_infrastructure_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/InfrastructureControls.tscn")

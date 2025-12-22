@@ -13,7 +13,8 @@ var population: float = 2 #In millions of people
 var unemployment: float = 5 #In percentage points
 var flux_unemployment = unemployment #Used to simulate slight fluxuations in unemployment from baseline every quarter
 var literacy: float = 40 #In percentage points
-var SOL: int = 30 #Standard of living rating on a scale of 0-99
+var SOL: int = 30 #Standard of living rating on a scale of 1-100
+var transport_access: float = 10 #Transportation access rating on a scale of 1-100
 var class_dict = {"working": 90, "middle": 0, "elite": 10} #Dictionary of percentage of population in each class
 var urban_dict = {"urban": 40, "suburban": 10, "rural": 50} #Dictionary of percentage of urban population
 

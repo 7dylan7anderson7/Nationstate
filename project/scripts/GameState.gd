@@ -15,6 +15,14 @@ var primary_policy
 var secondary_policy
 var higher_policy
 
+#Variables to hold healthcare policy options
+var hospital_policy_index = 1
+var insurance_policy_index = 1
+var research_policy_index = 1
+var hospital_policy
+var insurance_policy
+var research_policy
+
 func next_quarter():
 	quarter += 1
 	if quarter > 4:

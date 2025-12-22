@@ -171,4 +171,6 @@ text = "Next Quarter"
 
 [connection signal="pressed" from="VBoxContainer/TradeButton" to="." method="_on_trade_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/EducationButton" to="." method="_on_education_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Healthcare" to="." method="_on_healthcare_pressed"]
+[connection signal="pressed" from="VBoxContainer/InfrastructureButton" to="." method="_on_infrastructure_button_pressed"]
 [connection signal="pressed" from="NextQuarterButton" to="." method="_on_next_quarter_button_pressed"]
