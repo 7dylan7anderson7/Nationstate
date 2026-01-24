@@ -1,0 +1,327 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxs5xyqugt84s"]
+
+[ext_resource type="Script" uid="uid://c2aou5ag1rk2b" path="res://scripts/InfrastructureControls.gd" id="1_wwqpn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwqpn"]
+bg_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7q5ul"]
+bg_color = Color(0.25490198, 0.25490198, 0.25490198, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wwqpn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19215687, 0.19215687, 0.19215687, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 201.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "Infrastructure"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -516.0
+offset_bottom = 516.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TransportAccessLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Transportation Access Rating: 10/100"
+
+[node name="RoadNetworkLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Road Capacity: 5M Trips per Day"
+
+[node name="RailNetworkLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Rail Capacity: 10M Trips per Day"
+
+[node name="RoadPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wwqpn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/RoadPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -105.5
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/RoadPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SelectedRoadLabel" type="Label" parent="VBoxContainer/RoadPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Road Network Funding: "
+
+[node name="RoadNameLabel" type="Label" parent="VBoxContainer/RoadPanel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Low"
+
+[node name="RoadDescriptionLabel" type="Label" parent="VBoxContainer/RoadPanel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Low focus on building and maintaining road network."
+horizontal_alignment = 1
+
+[node name="RoadHSlider" type="HSlider" parent="VBoxContainer/RoadPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 4.0
+value = 1.0
+tick_count = 4
+ticks_position = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/RoadPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="RoadPublicLabel" type="Label" parent="VBoxContainer/RoadPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Low"
+
+[node name="RoadPrivateLabel" type="Label" parent="VBoxContainer/RoadPanel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 42
+text = "High"
+
+[node name="RailPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7q5ul")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/RailPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -105.5
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/RailPanel/VBoxContainer2"]
+layout_mode = 2
+
+[node name="SelectedRailLabel" type="Label" parent="VBoxContainer/RailPanel/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Rail Network Funding: "
+
+[node name="RailNameLabel" type="Label" parent="VBoxContainer/RailPanel/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Low"
+
+[node name="RailDescriptionLabel" type="Label" parent="VBoxContainer/RailPanel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Low focus on building and maintaining rail network."
+horizontal_alignment = 1
+
+[node name="RailHSlider" type="HSlider" parent="VBoxContainer/RailPanel/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 4.0
+value = 1.0
+tick_count = 4
+ticks_position = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/RailPanel/VBoxContainer2"]
+layout_mode = 2
+
+[node name="RailPublicLabel" type="Label" parent="VBoxContainer/RailPanel/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Low"
+
+[node name="RailPrivateLabel" type="Label" parent="VBoxContainer/RailPanel/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 42
+text = "High"
+
+[node name="GoodsPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7q5ul")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/GoodsPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -105.5
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/GoodsPanel/VBoxContainer2"]
+layout_mode = 2
+
+[node name="SelectedGoodsLabel" type="Label" parent="VBoxContainer/GoodsPanel/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Goods Transportation: "
+
+[node name="GoodsNameLabel" type="Label" parent="VBoxContainer/GoodsPanel/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Balanced"
+
+[node name="GoodsDescriptionLabel" type="Label" parent="VBoxContainer/GoodsPanel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Balance between using roads and rail for transporting goods."
+horizontal_alignment = 1
+
+[node name="GoodsHSlider" type="HSlider" parent="VBoxContainer/GoodsPanel/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 2.0
+value = 1.0
+tick_count = 2
+ticks_position = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/GoodsPanel/VBoxContainer2"]
+layout_mode = 2
+
+[node name="GoodsPublicLabel" type="Label" parent="VBoxContainer/GoodsPanel/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Roads"
+
+[node name="GoodsPrivateLabel" type="Label" parent="VBoxContainer/GoodsPanel/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 42
+text = "Rail"
+
+[node name="PublicTransportPanel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 200)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7q5ul")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/PublicTransportPanel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -105.5
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/PublicTransportPanel/VBoxContainer2"]
+layout_mode = 2
+
+[node name="SelectedPTLabel" type="Label" parent="VBoxContainer/PublicTransportPanel/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Public Transport Funding: "
+
+[node name="PTNameLabel" type="Label" parent="VBoxContainer/PublicTransportPanel/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Moderate"
+
+[node name="PTDescriptionLabel" type="Label" parent="VBoxContainer/PublicTransportPanel/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Public transportation is funded to fill current demand."
+horizontal_alignment = 1
+
+[node name="PTHSlider" type="HSlider" parent="VBoxContainer/PublicTransportPanel/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 4.0
+value = 2.0
+tick_count = 4
+ticks_position = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PublicTransportPanel/VBoxContainer2"]
+layout_mode = 2
+
+[node name="PTLowLabel" type="Label" parent="VBoxContainer/PublicTransportPanel/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Low"
+
+[node name="PTHighLabel" type="Label" parent="VBoxContainer/PublicTransportPanel/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 42
+text = "High"
+
+[node name="SetInfrastructurePolicyButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 72
+text = "Set Policy"
+
+[connection signal="value_changed" from="VBoxContainer/RoadPanel/VBoxContainer/RoadHSlider" to="." method="_on_road_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/RailPanel/VBoxContainer2/RailHSlider" to="." method="_on_rail_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/GoodsPanel/VBoxContainer2/GoodsHSlider" to="." method="_on_goods_h_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/PublicTransportPanel/VBoxContainer2/PTHSlider" to="." method="_on_pth_slider_value_changed"]
+[connection signal="pressed" from="SetInfrastructurePolicyButton" to="." method="_on_set_infrastructure_policy_button_pressed"]

@@ -125,7 +125,7 @@ text = "Taxes"
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 42
-text = "Trade"
+text = "Foreign Policy"
 
 [node name="EducationButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -169,4 +169,8 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 72
 text = "Next Quarter"
 
+[connection signal="pressed" from="VBoxContainer/TradeButton" to="." method="_on_trade_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/EducationButton" to="." method="_on_education_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Healthcare" to="." method="_on_healthcare_pressed"]
+[connection signal="pressed" from="VBoxContainer/InfrastructureButton" to="." method="_on_infrastructure_button_pressed"]
 [connection signal="pressed" from="NextQuarterButton" to="." method="_on_next_quarter_button_pressed"]

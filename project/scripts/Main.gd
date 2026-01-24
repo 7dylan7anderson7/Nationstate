@@ -6,9 +6,8 @@ extends Control
 @onready var population_label = $VBoxContainer/Panel/HBoxContainer/VBoxContainer/PopulationLabel
 @onready var unemployment_label = $VBoxContainer/Panel/HBoxContainer/VBoxContainer2/UnemploymentLabel
 
-#Funciton executes on game startup
+#Function executes on game startup
 func _ready():
-	EconomySystem.calculate_GDP()
 	update_labels()
 
 #Updates all main menu labels with current data
@@ -18,8 +17,23 @@ func update_labels():
 	population_label.text = "Population: %sM" % [snapped(EconomySystem.population, 0.01)]
 	unemployment_label.text = "Unemployment: %s%%" % [snapped(EconomySystem.flux_unemployment, 0.1)]
 
-
 func _on_next_quarter_button_pressed() -> void:
 	GameState.next_quarter()
 	EconomySystem.update_economy()
+	InfrastructureSystem.update_infrastructure()
 	update_labels()
+
+#Functionality for Trade button
+func _on_trade_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/TradeControls.tscn")
+
+#Functionality for Education button
+func _on_education_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/EducationControls.tscn")
+
+
+func _on_healthcare_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/HealthcareControls.tscn")
+
+func _on_infrastructure_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/InfrastructureControls.tscn")

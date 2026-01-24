@@ -2,19 +2,18 @@
 
 ## About
 Nationstate is a turn-based political and economic simulation game where the goal 
-is to stay in power through strategic policy decisions and managing key interest groups.
+is to stay in power through strategic policy decisions and maintaing economic stability.
 
 ## Tech Stack
-- Godot 4.x
+- Godot 4.5.1
 - GDScript
-- JSON-driven game configuration
 - Python tools for balancing
 
 ## Features (MVP)
 - Quarterly turn-based gameplay
-- Economic simulation (GDP, inflation, unemployment, debt, budget)
-- Social groups with dynamic approval
-- Political actions with push-pull outcomes
+- Economic simulation (GDP, inflation, unemployment, literacy, class)
+- Political actions with economic and social outcomes
+- Approval system affected by economic and social outcomes
 - Elections every 4 years
 - Save/load system
 
@@ -25,12 +24,13 @@ assets/ prevents clutter inside project
 tools/ holds Python scripts for simulation testing
 
 ## Roadmap
-- Week 1: Setup & core loop
-- Week 2: Economy simulation
-- Week 3: Social group system
-- Week 4: Elections
-- Week 5: Events
-- Week 6: UI polish & app store prep
+- Phase 1: Setup & core loop
+- Phase 2: Economy simulation
+- Phase 3: Player actions
+- Phase 4: Income and expenditures
+- Phase 5: Approval and Elections
+- Phase 6: Save/Load and UI polish
+- Phase 7: App store prep
 
 ## License
 MIT

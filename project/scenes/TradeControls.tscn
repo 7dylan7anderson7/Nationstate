@@ -1,0 +1,123 @@
+[gd_scene load_steps=3 format=3 uid="uid://dani10ciki4ij"]
+
+[ext_resource type="Script" uid="uid://wi1pqcrrhw8d" path="res://scripts/TradeControls.gd" id="1_2607w"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2607w"]
+bg_color = Color(0.25565878, 0.25565878, 0.25565878, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2607w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19215687, 0.19215687, 0.19215687, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 201.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 72
+text = "Trade
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(50, 300)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2607w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -105.5
+offset_bottom = 105.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="SelectTradeLabel" type="Label" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Selected Trade Policy: "
+
+[node name="PolicyNameLabel" type="Label" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Balanced Trade"
+
+[node name="PolicyDescriptionLabel" type="Label" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Moderate trade with strategic protections."
+horizontal_alignment = 1
+
+[node name="TradePolicyHSlider" type="HSlider" parent="VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 4.0
+value = 2.0
+tick_count = 4
+ticks_position = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="IsolationismLabel" type="Label" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Isolationist"
+
+[node name="FreeTradeLabel" type="Label" parent="VBoxContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 42
+text = "Free Trade"
+
+[node name="SetTradePolicyButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 72
+text = "Set Policy"
+
+[connection signal="value_changed" from="VBoxContainer/Panel/VBoxContainer/TradePolicyHSlider" to="." method="_on_trade_policy_h_slider_value_changed"]
+[connection signal="pressed" from="SetTradePolicyButton" to="." method="_on_set_trade_policy_button_pressed"]
