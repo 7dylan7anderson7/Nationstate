@@ -23,6 +23,16 @@ var hospital_policy
 var insurance_policy
 var research_policy
 
+#Variables to hold infrastructure policy options
+var road_policy_index = 1
+var rail_policy_index = 1
+var goods_policy_index = 1
+var pt_policy_index = 2
+var road_policy
+var rail_policy
+var goods_policy
+var pt_policy
+
 func next_quarter():
 	quarter += 1
 	if quarter > 4:

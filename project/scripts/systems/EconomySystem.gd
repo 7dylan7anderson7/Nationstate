@@ -4,9 +4,10 @@ extends Node
 var RNG = RandomNumberGenerator.new()
 
 #GDP variable declarations
-var domestic_GDP: float = 1.5 #Domestic GDP in billions of dollars
+var domestic_GDP: float = 18.5 #Domestic GDP in billions of dollars
 var trade_GDP: float #GDP from trade determined using the trade modifier
 var total_GDP: float #In billions of dollars
+var percapita_GDP: float
 
 #Variable declarations with values for game start
 var population: float = 2 #In millions of people
@@ -14,9 +15,7 @@ var unemployment: float = 5 #In percentage points
 var flux_unemployment = unemployment #Used to simulate slight fluxuations in unemployment from baseline every quarter
 var literacy: float = 40 #In percentage points
 var SOL: int = 30 #Standard of living rating on a scale of 1-100
-var transport_access: float = 10 #Transportation access rating on a scale of 1-100
 var class_dict = {"working": 90, "middle": 0, "elite": 10} #Dictionary of percentage of population in each class
-var urban_dict = {"urban": 40, "suburban": 10, "rural": 50} #Dictionary of percentage of urban population
 
 #Modifier variables set as defaults that are affected by political decisions
 var inflation: float = .02 #Inflation percentage as a multiplier
@@ -56,6 +55,9 @@ func calculate_GDP():
 	trade_GDP = (domestic_GDP * trade)
 	total_GDP = domestic_GDP + trade_GDP
 
+func calcualte_percapita_GDP():
+	percapita_GDP = total_GDP / population #In Thousands of dollars per citizen
+
 func inflict_inflation():
 	domestic_GDP = domestic_GDP + (domestic_GDP * (inflation/4))
 
@@ -65,4 +67,5 @@ func update_economy():
 	modify_literacy()
 	calculate_employment()
 	calculate_GDP()
+	calcualte_percapita_GDP()
 	inflict_inflation()

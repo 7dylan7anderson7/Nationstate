@@ -17,10 +17,10 @@ func update_labels():
 	population_label.text = "Population: %sM" % [snapped(EconomySystem.population, 0.01)]
 	unemployment_label.text = "Unemployment: %s%%" % [snapped(EconomySystem.flux_unemployment, 0.1)]
 
-
 func _on_next_quarter_button_pressed() -> void:
 	GameState.next_quarter()
 	EconomySystem.update_economy()
+	InfrastructureSystem.update_infrastructure()
 	update_labels()
 
 #Functionality for Trade button
