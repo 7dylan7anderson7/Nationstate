@@ -10,10 +10,10 @@ var goods_transport_demand: float = 10 #Transportation demand for goods in milli
 #Network variables
 var road_funding: float = 1 #Road funding level on a scale of 0-4
 var road_network: float = 5 #Road network rating in millions of trips it can handle per day
-var road_usage: float = 50 #Road network usage as a percentage
+var road_usage: float = 67 #Road network usage as a percentage
 var rail_funding: float = 1 #Rail funding level on a scale of 0-4
 var rail_network: float = 10 #Rail network rating in millions of trips it can handle per day
-var rail_usage: float = 95 #Rail network usage as a percentage
+var rail_usage: float = 80 #Rail network usage as a percentage
 
 #Citizen transportation variables
 var pt_funding: float = 2
@@ -179,18 +179,16 @@ func calculate_rail_usage():
 
 #Helper function to determine public transit effectiveness based on funding
 func get_pt_effectiveness() -> float:
-	match pt_funding:
-		0:  # Minimal - no PT available
-			return 0.0
-		1:  # Low - only essential services
-			return 0.3
-		2:  # Moderate - meets current demand
-			return 0.7
-		3:  # High - above demand
-			return 0.9
-		4:  # Maximum - extensive coverage
-			return 1.0
-	return 0.7  # Default to moderate
+	if pt_funding == 0:
+		return 0.0
+	elif pt_funding == 1:
+		return 0.3
+	elif pt_funding == 2:
+		return 0.7
+	elif pt_funding == 3:
+		return 0.9
+	else:
+		return 1.0
 
 #Function adjusts urbanization levels within cities
 #Urbanization is dependent on road network, rail network, and public transportation
