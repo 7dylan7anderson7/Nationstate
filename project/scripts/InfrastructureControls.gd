@@ -22,6 +22,10 @@ extends Control
 @onready var pt_description_label: Label = $VBoxContainer/PublicTransportPanel/VBoxContainer2/PTDescriptionLabel
 @onready var pt_name_label: Label = $VBoxContainer/PublicTransportPanel/VBoxContainer2/HBoxContainer2/PTNameLabel
 
+#Transport access and urbanization labels
+@onready var transport_access_label: Label = $VBoxContainer/TransportAccessLabel
+@onready var urbanization_label: Label = $VBoxContainer/UrbanizationLabel
+
 #Dictionary for road funding policies
 const RoadPolicies = [
 	{
@@ -109,6 +113,27 @@ const PTPolicies = [
 	}
 ]
 
+#Function for updating all dynamic labels
+func update_all_labels():
+	road_network_label.text = "Road Capacity: %sM Trips/Day (Usage: %s%%)" % [
+		snapped(InfrastructureSystem.road_network, 0.1),
+		snapped(InfrastructureSystem.road_usage, 0.1)
+	]
+	rail_network_label.text = "Rail Capacity: %sM Trips/Day (Usage: %s%%)" % [
+		snapped(InfrastructureSystem.rail_network, 0.1),
+		snapped(InfrastructureSystem.rail_usage, 0.1)
+	]
+	transport_access_label.text = "Transportation Access Rating: %s/100" % [
+		snapped(InfrastructureSystem.transport_access, 0.1)
+	]
+	
+	# Add urbanization label if it exists
+	if urbanization_label:
+		urbanization_label.text = "Urbanization: %s%% Urban / %s%% Suburban" % [
+			snapped(InfrastructureSystem.urban_dict["urban"], 0.1),
+			snapped(InfrastructureSystem.urban_dict["suburban"], 0.1)
+		]
+
 #Function for updating road funding policy
 func update_road(value: int):
 	var roadpolicy = RoadPolicies[value]
@@ -118,7 +143,7 @@ func update_road(value: int):
 	GameState.road_policy = roadpolicy
 	InfrastructureSystem.road_funding = value
 	road_slider.value = value
-	road_network_label.text = "Road Capacity: %sM Trips per Day" % [snapped(InfrastructureSystem.road_network, 0.1)]
+	update_all_labels()
 
 #Function for updating rail funding policy
 func update_rail(value: int):
@@ -129,7 +154,7 @@ func update_rail(value: int):
 	GameState.rail_policy = railpolicy
 	InfrastructureSystem.rail_funding = value
 	rail_slider.value = value
-	rail_network_label.text = "Rail Capacity: %sM Trips per Day" % [snapped(InfrastructureSystem.rail_network, 0.1)]
+	update_all_labels()
 
 #Function for updating goods transportation preferrence policy
 func update_goods(value: int):
@@ -161,6 +186,7 @@ func update_pt(value: int):
 	GameState.pt_policy = ptpolicy
 	InfrastructureSystem.pt_funding = value
 	pt_slider.value = value
+	update_all_labels()
 
 func _on_road_h_slider_value_changed(value: float) -> void:
 	update_road(value)
@@ -180,6 +206,7 @@ func _ready() -> void:
 	update_rail(GameState.rail_policy_index)
 	update_goods(GameState.goods_policy_index)
 	update_pt(GameState.pt_policy_index)
+	update_all_labels()
 
 func _on_set_infrastructure_policy_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
