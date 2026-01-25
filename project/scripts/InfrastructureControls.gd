@@ -115,11 +115,11 @@ const PTPolicies = [
 
 #Function for updating all dynamic labels
 func update_all_labels():
-	road_network_label.text = "Road Capacity: %sM Trips/Day (Usage: %s%%)" % [
+	road_network_label.text = "Road Capacity: %sM Trips/Day \n(Usage: %s%%)" % [
 		snapped(InfrastructureSystem.road_network, 0.1),
 		snapped(InfrastructureSystem.road_usage, 0.1)
 	]
-	rail_network_label.text = "Rail Capacity: %sM Trips/Day (Usage: %s%%)" % [
+	rail_network_label.text = "Rail Capacity: %sM Trips/Day \n(Usage: %s%%)" % [
 		snapped(InfrastructureSystem.rail_network, 0.1),
 		snapped(InfrastructureSystem.rail_usage, 0.1)
 	]
@@ -127,12 +127,9 @@ func update_all_labels():
 		snapped(InfrastructureSystem.transport_access, 0.1)
 	]
 	
-	# Add urbanization label if it exists
-	if urbanization_label:
-		urbanization_label.text = "Urbanization: %s%% Urban / %s%% Suburban" % [
-			snapped(InfrastructureSystem.urban_dict["urban"], 0.1),
-			snapped(InfrastructureSystem.urban_dict["suburban"], 0.1)
-		]
+	urbanization_label.text = "Urbanization: %s%%" % [
+		snapped(InfrastructureSystem.urban_dict["urban"], 0.1),
+	]
 
 #Function for updating road funding policy
 func update_road(value: int):

@@ -57,6 +57,11 @@ offset_bottom = 516.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="UrbanizationLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "Urabanization: 90%"
+
 [node name="TransportAccessLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 42
