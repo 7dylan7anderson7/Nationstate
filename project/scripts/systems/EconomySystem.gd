@@ -59,7 +59,16 @@ func calcualte_percapita_GDP():
 	percapita_GDP = total_GDP / population #In Thousands of dollars per citizen
 
 func inflict_inflation():
-	domestic_GDP = domestic_GDP + (domestic_GDP * (inflation/4))
+	# Apply base inflation growth
+	var base_growth = domestic_GDP * (inflation/4)
+	
+	# Apply infrastructure modifier to the growth
+	# infra_gdp_modifier of 1.0 = normal growth
+	# infra_gdp_modifier of 0.6 = growth constrained (trending toward 60% of current)
+	# infra_gdp_modifier of 1.2 = enhanced growth (infrastructure enabling expansion)
+	var infrastructure_adjusted_growth = base_growth * InfrastructureSystem.infra_gdp_modifier
+	
+	domestic_GDP = domestic_GDP + infrastructure_adjusted_growth
 
 #Function called every quarter to run the economic simulation
 func update_economy():

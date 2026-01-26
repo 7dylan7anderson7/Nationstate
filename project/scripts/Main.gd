@@ -120,6 +120,42 @@ func print_infrastructure_debug():
 		(InfrastructureSystem.road_network + InfrastructureSystem.rail_network))
 	print("Overall capacity utilization: %s%%" % snapped(capacity_utilization, 0.1))
 	
+	print("\n--- GDP MODIFIER SYSTEM ---")
+	print("Current GDP modifier: %s" % snapped(InfrastructureSystem.infra_gdp_modifier, 0.001))
+	#print("Target GDP modifier: %s" % snapped(InfrastructureSystem.infra_gdp_modifier_target, 0.001))
+	
+	# Calculate overall capacity utilization
+	var total_capacity = InfrastructureSystem.road_network + InfrastructureSystem.rail_network
+	var total_trips = InfrastructureSystem.citizen_road_trips + InfrastructureSystem.citizen_pt_trips + InfrastructureSystem.goods_road_trips + InfrastructureSystem.goods_rail_trips
+	var overall_utilization = 0.5
+	if total_capacity > 0:
+		overall_utilization = total_trips / total_capacity
+	print("Overall system utilization: %s%%" % snapped(overall_utilization * 100, 0.1))
+	print("Spare capacity: %s%%" % snapped((1.0 - overall_utilization) * 100, 0.1))
+	
+	# Calculate capacity bonus
+	var capacity_bonus = 0.0
+	if overall_utilization < 0.9:
+		var spare_capacity_pct = 1.0 - overall_utilization
+		capacity_bonus = spare_capacity_pct * 0.3
+	print("Capacity growth bonus: +%s%%" % snapped(capacity_bonus * 100, 0.1))
+	
+	var road_dependency = 0.5
+	if total_trips > 0:
+		road_dependency = (InfrastructureSystem.citizen_road_trips + InfrastructureSystem.goods_road_trips) / total_trips
+	print("Road dependency: %s%%" % snapped(road_dependency * 100, 0.1))
+	
+	var congestion_penalty = InfrastructureSystem.calculate_road_congestion_penalty()
+	print("Road congestion penalty: %s%%" % snapped(congestion_penalty * 100, 0.1))
+	print("Weighted congestion impact: -%s%%" % snapped(congestion_penalty * road_dependency * 100, 0.1))
+	
+	if InfrastructureSystem.infra_gdp_modifier < 1.0:
+		print("→ Infrastructure CONSTRAINING economy by %s%%" % snapped((1.0 - InfrastructureSystem.infra_gdp_modifier) * 100, 0.1))
+	elif InfrastructureSystem.infra_gdp_modifier > 1.0:
+		print("→ Infrastructure ENABLING %s%% faster growth" % snapped((InfrastructureSystem.infra_gdp_modifier - 1.0) * 100, 0.1))
+	else:
+		print("→ Infrastructure has neutral effect on economy")
+	
 	print("\n--- WARNINGS ---")
 	if InfrastructureSystem.road_usage > 90:
 		print("⚠ Road network near capacity!")
@@ -130,6 +166,25 @@ func print_infrastructure_debug():
 	if InfrastructureSystem.forced_walking_trips > 0.5:
 		print("⚠ Significant forced walking: %sM trips/day (reduces GDP)" % 
 			snapped(InfrastructureSystem.forced_walking_trips, 0.1))
+	if InfrastructureSystem.road_usage > 80:
+		print("⚠ Road congestion detected - system dynamically shifting traffic to rail/PT")
+	if InfrastructureSystem.road_usage > 85:
+		print("⚠ Heavy road congestion - traffic reducing economic efficiency!")
+	if InfrastructureSystem.infra_gdp_modifier < 0.9:
+		print("⚠ Infrastructure seriously constraining economic growth!")
+	
+	# Calculate overall utilization warning
+	total_capacity = InfrastructureSystem.road_network + InfrastructureSystem.rail_network
+	total_trips = InfrastructureSystem.citizen_road_trips + InfrastructureSystem.citizen_pt_trips + InfrastructureSystem.goods_road_trips + InfrastructureSystem.goods_rail_trips
+	var overall_util = 0.5
+	if total_capacity > 0:
+		overall_util = total_trips / total_capacity
+	if overall_util > 0.95:
+		print("⚠ CRITICAL: Overall infrastructure at 95%+ capacity - build more!")
+	
+	# Calculate unmet goods demand
+	goods_unmet = InfrastructureSystem.goods_transport_demand - (InfrastructureSystem.goods_road_trips + InfrastructureSystem.goods_rail_trips)
+	if goods_unmet > 0.1:
+		print("⚠ CRITICAL: Unmet goods demand: %sM trips/day (major GDP impact!)" % snapped(goods_unmet, 0.1))
 	
 	print("\n==========================================\n")
-	#END INFRASTRUCTURE DEBUG SCRIPT
