@@ -157,6 +157,12 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 42
 text = "Safety"
 
+[node name="TestButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Developer Testing"
+
 [node name="NextQuarterButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 12
@@ -173,4 +179,5 @@ text = "Next Quarter"
 [connection signal="pressed" from="VBoxContainer/EducationButton" to="." method="_on_education_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Healthcare" to="." method="_on_healthcare_pressed"]
 [connection signal="pressed" from="VBoxContainer/InfrastructureButton" to="." method="_on_infrastructure_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/TestButton" to="." method="_on_test_button_pressed"]
 [connection signal="pressed" from="NextQuarterButton" to="." method="_on_next_quarter_button_pressed"]
